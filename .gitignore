@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.local
+.claude/settings.local.json
+
+# Repositories cloned for analysis; never commit them.
+repos/
+
+# Local project customization and runtime metadata.
+modes/_project.md
+.product-ops/

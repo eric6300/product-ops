@@ -1,0 +1,50 @@
+# Repository registry for the project being analyzed.
+#
+# Add repositories below, replace the example source, and set enabled: true.
+# The source may be an SSH or HTTPS Git URL. Never put credentials in this file.
+# Any nested entry with local_path + source is understood by /sync-repos.
+
+project:
+  name: "your-project"
+  description: "Optional description of the project and its products"
+
+repositories:
+  handbook:
+    enabled: false
+    local_path: "repos/handbook"
+    source: "https://github.com/example-org/example-handbook.git"
+    default_branch: "main"
+    category: "documentation"
+    description: "Product documentation and decisions"
+
+  clients:
+    android:
+      enabled: false
+      local_path: "repos/android-client"
+      source: "https://github.com/example-org/example-android.git"
+      default_branch: "main"
+      platform: "android"
+      category: "client"
+    ios:
+      enabled: false
+      local_path: "repos/ios-client"
+      source: "https://github.com/example-org/example-ios.git"
+      default_branch: "main"
+      platform: "ios"
+      category: "client"
+    web:
+      enabled: false
+      local_path: "repos/web-client"
+      source: "https://github.com/example-org/example-web.git"
+      default_branch: "main"
+      platform: "web"
+      category: "client"
+
+  services:
+    api:
+      enabled: false
+      local_path: "repos/api"
+      source: "https://github.com/example-org/example-api.git"
+      default_branch: "main"
+      platform: "backend"
+      category: "service"

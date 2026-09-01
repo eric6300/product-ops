@@ -1,0 +1,5 @@
+# Knowledge entries are append-only. See DATA_CONTRACT.md.
+data/faq-knowledge.md      merge=union
+data/feature-registry.md   merge=union
+data/platform-gaps.md      merge=union
+data/research-history.tsv  merge=union
