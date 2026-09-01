@@ -17,7 +17,9 @@ Examples:
 1. Read `data/faq-knowledge.md` for the same or a similar question.
 2. Read `data/feature-registry.md` for related feature locations.
 3. Read recent `reports/` insights when the question involves a previous decision or known gap.
-4. If an entry is older than 90 days or conflicts with current evidence, re-verify it.
+4. Read `analysis.default_excludes` and repository-level `include` / `exclude`
+   patterns from `config/repos.yml`.
+5. If an entry is older than 90 days or conflicts with current evidence, re-verify it.
 
 ## Step 1 — Search documentation
 
@@ -25,7 +27,9 @@ Inspect repositories marked as documentation or handbook repositories in `config
 
 ## Step 2 — Search repositories and select roles
 
-Use `rg` over the relevant enabled repositories. Select role agents by topic:
+Use `rg` over each relevant repository's configured `include` scope while
+honoring all default and repository exclusions. Record repository commit SHAs
+or immutable refs for evidence. Select role agents by topic:
 
 | Topic or keyword | Role agent |
 |------------------|------------|

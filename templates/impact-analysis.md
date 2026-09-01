@@ -6,6 +6,14 @@
 
 ---
 
+## Evidence snapshot
+
+- **Repository revisions:** {repository-id=commit-or-ref; use — when unavailable}
+- **Repositories and paths searched:** {scope}
+- **Configured search scope:** {include patterns or repository roots}
+- **Configured exclusions:** {patterns or —}
+- **Limitations:** {missing repositories, unavailable tests, or —}
+
 ## Change summary
 
 {Current behavior, desired behavior, constraints, assumptions, and non-goals.}

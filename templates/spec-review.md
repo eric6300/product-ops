@@ -7,6 +7,14 @@
 
 ---
 
+## Evidence snapshot
+
+- **Repository revisions:** {repository-id=commit-or-ref; use — when unavailable}
+- **Repositories and paths searched:** {scope}
+- **Configured search scope:** {include patterns or repository roots}
+- **Configured exclusions:** {patterns or —}
+- **Limitations:** {missing repositories, inaccessible design, or —}
+
 ## Requirement summary
 
 {Restate the requirement in your own words.}
@@ -34,12 +42,9 @@
 
 ## Cross-platform considerations
 
-| Platform or layer | Consideration | Confidence |
-|-------------------|---------------|------------|
-| Android | {note} | {✅/⚠️/❌} |
-| iOS | {note} | {✅/⚠️/❌} |
-| Web | {note} | {✅/⚠️/❌} |
-| Backend / service | {note} | {✅/⚠️/❌} |
+| Configured platform or layer | Consideration | Confidence |
+|------------------------------|---------------|------------|
+| {surface} | {note} | {✅/⚠️/❌} |
 
 ## Role-agent perspectives
 
@@ -103,7 +108,11 @@
 
 **Priority:** {Must / Should / Could}
 
-## API specification
+## API specification (if applicable)
+
+Write `Not applicable` when the requirement does not change an API. For an
+implementation handoff, prefer OpenAPI 3.1 or JSON Schema. The compact example
+below is illustrative and must not be treated as a complete API contract.
 
 ### `{METHOD} /api/v1/{resource}`
 
@@ -130,7 +139,9 @@ Response:
       message: string
 ```
 
-## Client data-layer changes
+## Client data-layer changes (if applicable)
+
+Write `Not applicable` when no client data-layer change is required.
 
 | Model or entity | Field | Type | Change | Source |
 |-----------------|-------|------|--------|--------|

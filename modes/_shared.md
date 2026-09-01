@@ -25,9 +25,13 @@ Before analysis:
 2. Read `modes/_project.md` if it exists.
 3. Read relevant entries in `data/` and prior report insights.
 4. Identify which repositories or documents can answer the question.
-5. Search before making technical claims.
+5. Apply `analysis.default_excludes`, repository-level `include` patterns, and
+   repository-level `exclude` patterns.
+6. Search before making technical claims.
 
-If there are no enabled repositories, answer only from user-provided material and clearly state that repository evidence was unavailable.
+If there are no enabled repositories, answer from user-provided material and
+the knowledge base when applicable, and clearly state that repository evidence
+was unavailable.
 
 ## Subagent guidance
 
@@ -67,6 +71,12 @@ Use these markers:
 
 Never fabricate a path, endpoint, class, configuration value, product rule, or implementation detail. State the search scope when a result is incomplete.
 
+Every formal report must include an evidence snapshot containing the analyzed
+repository revision or immutable ref, the repositories and paths searched,
+configured search scope and exclusions, and any evidence limitations. Line
+numbers alone are not sufficient for reproducibility because source files
+change.
+
 ## Severity framework
 
 Use severity consistently in requirements and impact reports:
@@ -80,7 +90,12 @@ Use severity consistently in requirements and impact reports:
 
 ## Search strategy
 
-Start with `rg --files` to understand repository structure, then use `rg -n` with appropriate file filters. Do not assume that a repository uses a particular language or framework; inspect manifests and configuration first.
+Start with `rg --files` to understand repository structure, then use `rg -n`
+with appropriate file filters. Treat a repository's `include` patterns as the
+initial search scope and pass all default and repository `exclude` patterns as
+negative globs on every search; exclusions always take precedence over
+includes. Do not assume that a repository uses a particular language or
+framework; inspect manifests and configuration first.
 
 Useful search dimensions include:
 
@@ -93,7 +108,7 @@ Useful search dimensions include:
 | Operations | Deployment, monitoring, jobs, queues, permissions, rollout configuration |
 | Documentation | Requirements, decision records, runbooks, help content |
 
-For platform comparisons, use the `platform` metadata in `config/repos.yml` where available. If metadata is missing, infer the platform from repository files only as a ⚠️ hypothesis until verified.
+For platform comparisons, use the `platform` metadata in `config/repos.yml` where available. If metadata is missing, infer the platform from repository files only as a ⚠️ hypothesis until verified. Report templates must render only the configured surfaces; do not assume Android, iOS, Web, or Backend exist.
 
 ## Design links
 
@@ -110,8 +125,8 @@ After a useful analysis, propose only genuinely reusable findings:
 
 | Trigger | File | Entry type |
 |---------|------|------------|
-| A feature or implementation location is confirmed | `data/feature-registry.md` | `## {feature}` |
-| A platform or service difference is found | `data/platform-gaps.md` | `## {feature — gap}` |
+| A feature or implementation location is confirmed | `data/feature-registry.md` | `## {feature}` with stable `ID` |
+| A platform or service difference is found | `data/platform-gaps.md` | `## {feature — gap}` with stable `ID` |
 | A question is likely to recur | `data/faq-knowledge.md` | `## Q: {question}` |
 | Research was performed | `data/research-history.tsv` | One TSV row |
 
@@ -125,6 +140,7 @@ Follow `DATA_CONTRACT.md`; show the proposed append before writing. Narrative pa
 | Cross-platform analysis | `reports/cross-platform/` | `{topic-slug}-{YYYY-MM-DD}.md` |
 | Impact analysis | `reports/impact-analysis/` | `{topic-slug}-{YYYY-MM-DD}.md` |
 | Architecture exploration | `reports/architecture/` | `{topic-slug}-{YYYY-MM-DD}.md` |
+| Multi-role panel | `reports/panels/` | `{topic-slug}-{YYYY-MM-DD}.md` |
 
 Avoid serial numbers so concurrent work is less likely to collide. Add `-2`, `-3`, and so on only when the same topic is genuinely repeated on the same date.
 

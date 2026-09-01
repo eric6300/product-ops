@@ -16,7 +16,8 @@ Examples:
 1. Read `config/repos.yml` and project context when present.
 2. Read related FAQ and feature-registry entries.
 3. Search prior architecture reports for reusable insights.
-4. Check Git status before writing.
+4. Read configured repository exclusions and record each analyzed repository's commit SHA or immutable ref.
+5. Check Git status before writing.
 
 ## Step 1 — Trace the system
 
@@ -47,7 +48,7 @@ Mark unverified edges explicitly instead of filling them with assumptions.
 
 ## Step 3 — Write the report
 
-Use `templates/architecture.md` and save the result under `reports/architecture/`. Include a Mermaid diagram when it materially improves understanding, plus component mapping, data flow, API endpoints, data models, key files, risks, and `## 💡 Insights and Learning`.
+Use `templates/architecture.md` and save the result under `reports/architecture/`. Include the evidence snapshot, a Mermaid diagram when it materially improves understanding, plus component mapping, data flow, API endpoints, data models, key files, risks, and `## 💡 Insights and Learning`.
 
 ## Step 4 — Accumulate knowledge
 

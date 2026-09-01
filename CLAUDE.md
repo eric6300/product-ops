@@ -14,6 +14,9 @@ product-ops is a general-purpose product advisor that runs in Claude Code CLI. I
 /sync-repos                   → Synchronize external repositories
 ```
 
+Cross-platform comparison, impact analysis, and architecture exploration are
+internal depth workflows loaded by `ask` after confirmation, not public routes.
+
 ## Hard rules
 
 1. **Search before answering**: Do not rely on memory for product or code behavior. State clearly when no evidence is found.
@@ -23,7 +26,8 @@ product-ops is a general-purpose product advisor that runs in Claude Code CLI. I
 5. **Persist reports**: Store formal analysis in the appropriate `reports/` directory using a file in `templates/`.
 6. **Read configuration first**: Before analysis, read `config/repos.yml` and, when present, `modes/_project.md`.
 7. **Protect secrets**: Do not read, print, or commit tokens, passwords, private keys, or unpublished credentials.
-8. **Confirm external writes**: Do not push, open pull requests, or modify external repositories without explicit confirmation. Review the diff first.
+8. **Honor exclusions**: Apply `analysis.default_excludes` and repository-level `exclude` patterns before searching or reading repository files.
+9. **Confirm external writes**: Do not push, open pull requests, or modify external repositories without explicit confirmation. Review the diff first.
 
 ## Document map
 
@@ -37,3 +41,4 @@ product-ops is a general-purpose product advisor that runs in Claude Code CLI. I
 | Role agents | `.claude/agents/` |
 | Repository configuration | `config/repos.yml` |
 | Project customization template | `modes/_project.template.md` |
+| Framework validation | `scripts/validate-framework.sh` |

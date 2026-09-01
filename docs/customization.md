@@ -10,6 +10,8 @@ The public repository contains generic defaults. Keep project-specific context i
 - `local_path`
 - `source`
 - optional `default_branch` (defaults to `main`)
+- optional `ref` (commit SHA or tag; record the resolved SHA for reproducible analysis)
+- optional `include` / `exclude` search patterns
 
 Useful metadata includes:
 
@@ -18,6 +20,12 @@ Useful metadata includes:
 - `description`: short human-readable context
 
 The registry is not a secret store. Keep credentials outside the file.
+
+The top-level `analysis.default_excludes` list applies to all repository
+searches. Add secrets, generated output, dependencies, and other files that
+must not be sent to the model. A repository-level `include` list can define an
+initial search scope, while `exclude` can narrow it further. Exclusions are
+always applied after includes and are part of every report's evidence snapshot.
 
 ## Project context
 
@@ -59,6 +67,9 @@ Create a mode file under `modes/` and document:
 
 Add the mode to the router table in `.claude/skills/product-ops/SKILL.md` and add a matching template under `templates/` when it produces a formal report.
 
+Keep the public command surface small. A mode that is only an internal depth
+workflow should be loaded by `ask` rather than exposed as another slash command.
+
 ## Knowledge-base customization
 
 Keep the append-only behavior in `DATA_CONTRACT.md`. If you add a data file:
@@ -67,6 +78,9 @@ Keep the append-only behavior in `DATA_CONTRACT.md`. If you add a data file:
 2. Document its write and merge behavior in `DATA_CONTRACT.md`.
 3. Add an appropriate `merge` rule to `.gitattributes` if concurrent append-only updates are expected.
 4. Add it to tracker instructions and the relevant mode files.
+
+Run `./scripts/validate-framework.sh` after changing a data format or adding a
+role, mode, template, or repository configuration field.
 
 ## Publishing checklist
 

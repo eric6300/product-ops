@@ -6,23 +6,36 @@
 
 ---
 
+## Evidence snapshot
+
+- **Repository revisions:** {repository-id=commit-or-ref; use — when unavailable}
+- **Repositories and paths searched:** {scope}
+- **Configured search scope:** {include patterns or repository roots}
+- **Configured exclusions:** {patterns or —}
+- **Limitations:** {missing surfaces, unavailable repositories, or —}
+
 ## Platform implementation matrix
 
-| Dimension | Android | iOS | Web | Backend / Service | Consistent? |
-|-----------|---------|-----|-----|-------------------|-------------|
-| Feature exists | | | | | |
-| Core behavior | | | | | |
-| UI interaction | | | N/A | N/A | |
-| API usage | | | | | |
-| Data model | | | | | |
-| Error handling | | | | | |
-| Empty state | | | | N/A | |
-| Loading state | | | | N/A | |
-| Offline behavior | | | | N/A | |
-| Permission logic | | | | | |
-| Analytics / observability | | | | | |
+Render one column per configured platform, client, service, or other surface.
+Do not add columns for surfaces that do not exist in the project.
 
-Use `N/A` for platforms or layers that do not exist in the project. Add a source and confidence marker to factual cells.
+| Dimension | {Surface 1} | {Surface 2} | {Surface N} | Consistent? |
+|-----------|-------------|-------------|-------------|-------------|
+| Feature exists | | | | |
+| Core behavior | | | | |
+| UI interaction | | | | |
+| API usage | | | | |
+| Data model | | | | |
+| Error handling | | | | |
+| Empty state | | | | |
+| Loading state | | | | |
+| Offline behavior | | | | |
+| Permission logic | | | | |
+| Analytics / observability | | | | |
+
+Use `N/A` for surfaces or layers that do not exist in the project and `Unknown`
+when the search did not establish an answer. Add a source and confidence
+marker to every factual cell.
 
 ## Gap list
 
@@ -32,21 +45,9 @@ Use `N/A` for platforms or layers that do not exist in the project. Add a source
 
 ## Detailed analysis
 
-### Android
+### {Configured surface}
 
-{Android implementation, behavior, and evidence.}
-
-### iOS
-
-{iOS implementation, behavior, and evidence.}
-
-### Web
-
-{Web implementation, behavior, and evidence.}
-
-### Backend or services
-
-{API, data, and service behavior.}
+{Implementation, behavior, and evidence. Repeat for each configured surface.}
 
 ## Recommended alignment plan
 
@@ -56,15 +57,15 @@ Use `N/A` for platforms or layers that do not exist in the project. Add a source
 
 ## API comparison
 
-| Endpoint | Android | iOS | Web | Consistent? | Notes |
-|----------|---------|-----|-----|-------------|-------|
+| Endpoint | {Surface 1} | {Surface 2} | {Surface N} | Consistent? | Notes |
+|----------|-------------|-------------|-------------|-------------|-------|
 | `{METHOD} /api/v1/{resource}` | | | | | |
 
 ## Data-layer comparison
 
-| Model or field | Android | iOS | Web | Backend | Consistent? |
-|----------------|---------|-----|-----|---------|-------------|
-| {model.field} | | | | | |
+| Model or field | {Surface 1} | {Surface 2} | {Surface N} | Consistent? |
+|----------------|-------------|-------------|-------------|-------------|
+| {model.field} | | | | |
 
 ## BDD consistency checks
 
@@ -80,9 +81,9 @@ Then {expected outcome}
 
 Examples:
   | platform |
-  | Android  |
-  | iOS      |
-  | Web      |
+  | {configured surface 1} |
+  | {configured surface 2} |
+  | {configured surface N} |
 ```
 
 ## 💡 Insights and Learning

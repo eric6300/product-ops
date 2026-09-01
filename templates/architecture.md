@@ -6,6 +6,14 @@
 
 ---
 
+## Evidence snapshot
+
+- **Repository revisions:** {repository-id=commit-or-ref; use — when unavailable}
+- **Repositories and paths searched:** {scope}
+- **Configured search scope:** {include patterns or repository roots}
+- **Configured exclusions:** {patterns or —}
+- **Limitations:** {missing repositories, inaccessible systems, or —}
+
 ## System overview
 
 {Describe the verified design and its boundaries. Separate observed behavior from inference.}

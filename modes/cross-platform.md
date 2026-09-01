@@ -15,7 +15,8 @@ Examples:
 1. Read `config/repos.yml` and group repositories by their `platform` metadata.
 2. Read `data/platform-gaps.md` and `data/feature-registry.md` for prior findings.
 3. Check recent reports for the same feature.
-4. Check Git status before writing.
+4. Read configured repository exclusions and record each analyzed repository's commit SHA or immutable ref.
+5. Check Git status before writing.
 
 ## Step 1 — Search in parallel
 
@@ -58,7 +59,7 @@ Classify gaps as:
 
 ## Step 3 — Write the report
 
-Use `templates/cross-platform.md` and save the result under `reports/cross-platform/`. Include evidence and confidence for every cell that contains a factual claim.
+Use `templates/cross-platform.md` and save the result under `reports/cross-platform/`. Include an evidence snapshot, dynamic configured surfaces, and evidence and confidence for every cell that contains a factual claim.
 
 ## Step 4 — Accumulate knowledge
 

@@ -7,11 +7,14 @@ Use one `## ` block per gap. Append blocks at the end; never edit an existing bl
 When a gap changes state, append a new block with the same title. The last block wins.
 
   ## {feature — short description of the gap}
+- **ID**: {stable-gap-slug}
 - **Status**: Unresolved | Fixed (YYYY-MM-DD) | Won't fix (reason)
 - **Severity**: P0–P3
 - **Platforms or services**: {comparison scope}
 - **Description**: {difference}
 - **Discovered**: YYYY-MM-DD
+- **Last verified**: YYYY-MM-DD
+- **Source revisions**: `{repository-id=commit-or-ref}`; use — when unavailable
 - **Report**: `{report path}`; use — when unavailable
 -->
 

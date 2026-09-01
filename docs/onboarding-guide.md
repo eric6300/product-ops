@@ -14,7 +14,16 @@ Install Git with the package manager for your operating system if the command is
 
 ## 2. Install Claude Code
 
-Follow the current installation instructions in the [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code). Sign in with the account your organization permits you to use.
+Follow the current installation instructions in the [Claude Code documentation](https://code.claude.com/docs/en/overview). Sign in with the account your organization permits you to use.
+
+The repository hook uses Python 3 to inspect tool input. Confirm that one of
+these commands works before using the framework:
+
+```bash
+python3 --version
+# Windows PowerShell may use:
+python --version
+```
 
 ## 3. Clone the framework
 
@@ -34,6 +43,9 @@ Open `config/repos.yml` and:
 3. Set `enabled: true` for repositories that should be analyzed.
 4. Set each `local_path`, `default_branch`, `platform`, and `category`.
 5. Use SSH or an already authenticated Git credential helper; never put credentials in the YAML file.
+
+The template also defines `analysis.default_excludes`. Add any project-specific
+secret, credential, generated-file, or dependency patterns before syncing.
 
 Example:
 
@@ -74,7 +86,18 @@ cp modes/_project.template.md modes/_project.md
 
 Fill in product terminology, supported platforms, domain rules, and information that must not be printed. The file is ignored by default. Keep it private if it contains internal context.
 
-## 7. Start using the framework
+## 7. Validate the setup
+
+From the framework root, run:
+
+```bash
+./scripts/validate-framework.sh
+```
+
+Inside Claude Code, `/skills`, `/agents`, `/hooks`, and `/doctor` can confirm
+that the project configuration was loaded.
+
+## 8. Start using the framework
 
 ```text
 /product-ops
@@ -85,7 +108,7 @@ Fill in product terminology, supported platforms, domain rules, and information 
 
 The framework cites repository paths and line numbers when evidence is available. It marks uncertainty instead of presenting guesses as facts.
 
-## 8. Review generated files
+## 9. Review generated files
 
 Before committing:
 

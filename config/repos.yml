@@ -3,6 +3,23 @@
 # Add repositories below, replace the example source, and set enabled: true.
 # The source may be an SSH or HTTPS Git URL. Never put credentials in this file.
 # Any nested entry with local_path + source is understood by /sync-repos.
+# Optional per-repository fields: ref (commit SHA or tag; resolved SHA is recorded), include, exclude.
+
+schema_version: 1
+
+analysis:
+  # These paths are never searched or read by the analysis workflows.
+  # Add project-specific secret and generated-file patterns here.
+  default_excludes:
+    - ".env"
+    - ".env.*"
+    - "**/*.pem"
+    - "**/*.key"
+    - "**/secrets/**"
+    - "**/node_modules/**"
+    - "**/vendor/**"
+    - "**/build/**"
+    - "**/dist/**"
 
 project:
   name: "your-project"

@@ -17,7 +17,8 @@ Examples:
 1. Read `config/repos.yml` and `modes/_project.md` when present.
 2. Read related feature and platform-gap entries.
 3. Search prior reports for similar decisions and `## 💡 Insights and Learning`.
-4. Check Git status before writing.
+4. Read configured repository exclusions and record each analyzed repository's commit SHA or immutable ref.
+5. Check Git status before writing.
 
 ## Step 1 — Define the change
 
@@ -61,7 +62,7 @@ For each risk, cite evidence and assign P0–P3 severity.
 
 ## Step 4 — Write the report
 
-Use `templates/impact-analysis.md` and save the result under `reports/impact-analysis/`. Include scope, dependency map, risks, migration stages, testing, documentation updates, feature flags, rollback plan, API changes, client data changes, BDD regression cases, and `## 💡 Insights and Learning`.
+Use `templates/impact-analysis.md` and save the result under `reports/impact-analysis/`. Include the evidence snapshot, scope, dependency map, risks, migration stages, testing, documentation updates, feature flags, rollback plan, API changes, client data changes, BDD regression cases, and `## 💡 Insights and Learning`.
 
 ## Step 5 — Accumulate knowledge
 

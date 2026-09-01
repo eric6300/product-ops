@@ -19,7 +19,8 @@ The requirement may be:
 3. Read related entries in `data/feature-registry.md` and `data/platform-gaps.md`.
 4. Search recent reports for `## 💡 Insights and Learning` related to the topic.
 5. Inspect design sources when the user provides them and the required tools are available.
-6. Check Git status before writing. Keep the report isolated from unrelated changes.
+6. Read configured repository exclusions and record each analyzed repository's commit SHA or immutable ref.
+7. Check Git status before writing. Keep the report isolated from unrelated changes.
 
 ## Step 1 — Understand the requirement
 
@@ -74,6 +75,7 @@ Use `templates/spec-review.md` and include:
 - API specification or explicit "not applicable"
 - Client data-layer changes or explicit "not applicable"
 - BDD test cases
+- Evidence snapshot with revisions, search scope, exclusions, and limitations
 - `## 💡 Insights and Learning`
 
 Save the report as `reports/spec-reviews/{topic-slug}-{YYYY-MM-DD}.md`.

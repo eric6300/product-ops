@@ -7,12 +7,13 @@ Use one `## ` block per feature. Append blocks at the end; never edit an existin
 When a feature needs an update, append a new block with the same title. The last block wins.
 
   ## {feature name}
+- **ID**: {stable-feature-slug}
 - **Products or services**: {scope}
-- **Android**: `{repo/path/file.ext:line}` ({notes}); use — when unavailable
-- **iOS**: `{repo/path/file.ext:line}` ({notes}); use — when unavailable
-- **Web**: `{repo/path/file.ext:line}` ({notes}); use — when unavailable
-- **Backend**: `{repo/path/file.ext:line}` ({notes}); use — when unavailable
+- **Implementations**:
+  - **{platform, service, or other surface}**: `{repo/path/file.ext:line}` ({notes}); use — when unavailable
 - **Documentation**: `{document path}` ({notes}); use — when unavailable
+- **Source revisions**: `{repository-id=commit-or-ref}`; use — when unavailable
+- **Confidence**: ✅ Confirmed | ⚠️ Needs verification | ❌ Not found
 - **Updated**: YYYY-MM-DD
 - **Notes**: {optional}
 -->

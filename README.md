@@ -1,6 +1,6 @@
 # product-ops
 
-A reusable AI product-operations framework for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI. It reads the code repositories and product documentation you configure, then helps with product questions, requirements reviews, cross-platform analysis, impact analysis, and architecture exploration.
+A reusable AI product-operations framework for the [Claude Code](https://code.claude.com/docs/en/overview) CLI. It reads the code repositories and product documentation you configure, then helps with product questions, requirements reviews, cross-platform analysis, impact analysis, and architecture exploration.
 
 This repository contains the framework only. It includes no product source code, product knowledge, analysis reports, brand assets, or project-specific remote configuration. Configure `config/repos.yml` before using it.
 
@@ -20,6 +20,10 @@ The framework is inspired by the ideas behind [career-ops](https://github.com/er
 
 Included roles: `android`, `ios`, `frontend`, `backend`, `pm`, `uiux`, and `marketing`.
 
+Cross-platform comparison, impact analysis, and architecture exploration are
+depth modes loaded by `ask` when needed; they are intentionally not separate
+public slash commands.
+
 ## Quick start
 
 1. Clone this repository and start Claude Code in the directory.
@@ -32,11 +36,13 @@ Included roles: `android`, `ios`, `frontend`, `backend`, `pm`, `uiux`, and `mark
 
 2. Edit `config/repos.yml`. Add the repositories you want to analyze and set the correct `source`, `local_path`, and `default_branch` values.
 
-3. Run `/sync-repos` when needed. Cloned repositories are placed in the `.gitignore`d `repos/` directory.
+3. Run `./scripts/validate-framework.sh` to check the local configuration.
 
-4. Run `/product-ops` to see the menu, or use one of the commands above.
+4. Run `/sync-repos` when needed. Cloned repositories are placed in the `.gitignore`d `repos/` directory.
 
-Read [`docs/onboarding-guide.md`](docs/onboarding-guide.md) and [`docs/customization.md`](docs/customization.md) for more detail.
+5. Run `/product-ops` to see the menu, or use one of the commands above.
+
+Read [`docs/onboarding-guide.md`](docs/onboarding-guide.md), [`docs/customization.md`](docs/customization.md), and [`docs/security-and-data-handling.md`](docs/security-and-data-handling.md) for more detail.
 
 ## Directory structure
 
@@ -44,11 +50,15 @@ Read [`docs/onboarding-guide.md`](docs/onboarding-guide.md) and [`docs/customiza
 product-ops/
 ├── CLAUDE.md                         # Operating rules and document map
 ├── DATA_CONTRACT.md                  # Knowledge-base write contract
+├── CONTRIBUTING.md                   # Contribution checklist
+├── SECURITY.md                       # Vulnerability and data-handling guidance
 ├── config/repos.yml                  # External repository configuration template
 ├── data/                             # Empty knowledge-base templates
 ├── modes/                            # Analysis modes and project template
 ├── reports/                          # Generated report destination
 ├── templates/                        # Report templates
+├── scripts/                          # Local validation helpers
+├── tests/                            # Guard and workflow smoke tests
 └── .claude/
     ├── agents/                       # Role agents
     ├── hooks/guard-repos.sh          # Read-only protection for cloned repositories
@@ -58,16 +68,20 @@ product-ops/
 ## Safety boundaries
 
 - `repos/` is intended to contain local mirrors of external source code; the framework must not modify the code inside them.
+- `analysis.default_excludes` in `config/repos.yml` is applied to repository searches. Add project-specific secret and generated-file patterns before syncing.
 - Never commit access tokens, SSH private keys, `.env` files, or other secrets.
 - Analysis results and the knowledge base may contain information about your project. Review `data/`, `reports/`, and custom files before publishing.
 - The framework does not automatically push content to any remote. Review the diff before committing, pushing, or opening a pull request.
+- See [`SECURITY.md`](SECURITY.md) and [`CONTRIBUTING.md`](CONTRIBUTING.md) for responsible disclosure and contribution guidelines.
 
 ## Customization
 
 - Configure repositories in `config/repos.yml`.
+- Use an optional commit-SHA `ref` (or a reviewed tag) for reproducible analysis and `analysis.default_excludes` for files that must not be searched.
 - Copy `modes/_project.template.md` to `modes/_project.md` and add project-specific context. The file is ignored by default so internal context is not published accidentally.
 - Edit the role definitions in `.claude/agents/` or add your own roles.
 - Adapt the report formats in `templates/` to your team's needs.
+- Run `./scripts/validate-framework.sh` after changing skills, hooks, configuration, or data formats.
 - Treat `DATA_CONTRACT.md` as the source of truth for knowledge-base updates.
 
 ## License
